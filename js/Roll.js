@@ -9,7 +9,7 @@ var Roll = function () {
     this.isEmphazed = false
     this.isRerollingTens = false
     this.isRerollingNines = false
-    this.pool = [10, 9, 5, 1]
+    this.pool = []
 }
 
 Roll.prototype.rollOneD10 = function () {
@@ -26,8 +26,9 @@ Roll.prototype.getChoice = function () {
 }
 
 Roll.prototype.rollingPool = function (n) {
+    this.rolled = n
     this.pool = []
     for (var k = 0; k < n; k++) {
-        this.pool.push(this.rollOneD10())
+        this.pool.push([this.rollOneD10()])
     }
 }

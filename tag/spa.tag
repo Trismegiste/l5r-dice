@@ -1,4 +1,9 @@
 <spa>
+    <form class="pure-form pure-g">
+        <button class="pure-button pure-u-1-3">10's</button>
+        <button class="pure-button pure-u-1-3">9's</button>
+        <button class="pure-button pure-u-1-3">1's</button>
+    </form>
     <div class="pure-g ask" if="{wait}">
         <div class="pure-u-1-2" each="{idx in model.getChoice() }">
             <div class="choice" onclick="{
@@ -7,10 +12,10 @@
         </div>
     </div>
     <div class="pure-g pool" if="{! wait}">
-        <div class="pure-u-1-2" each="{item in model.pool}">
+        <div class="pure-u-1-2" each="{d10 in model.pool}">
             <div class="die" onclick="{
                         parent.onReroll
-                    }">{item}</div>
+                    }">{d10[0]}</div>
         </div>
     </div>
     <script>
@@ -23,7 +28,8 @@
             self.wait = false
         }
 
-        this.onReroll = function () {
+        this.onReroll = function (e) {
+            var lastValue = e.item.d10[0]
             self.wait = true
         }
     </script>
