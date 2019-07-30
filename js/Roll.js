@@ -31,3 +31,20 @@ Roll.prototype.rollingPool = function () {
         this.pool.push([this.rollOneD10()])
     }
 }
+
+Roll.prototype.getDice = function (n) {
+    var d10 = this.pool[n]
+
+    return d10.reduce(function (v, s) {
+        return v + s
+    })
+}
+
+Roll.prototype.getTotal = function () {
+    var sum = 0
+    for (var k = 0; k < this.kept; k++) {
+        sum += this.getDice(k)
+    }
+
+    return sum
+}

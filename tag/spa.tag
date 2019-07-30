@@ -10,13 +10,15 @@
         <button class="pure-button pure-u-1-3">10's</button>
         <button class="pure-button pure-u-1-3">1's</button>
         <button class="pure-button pure-u-1-3">9's</button>
-        <div class="pure-u-1-2" each="{d10 in model.pool}">
+        <div class="pure-u-1-2" each="{d10, idx in model.pool}">
             <div class="die" onclick="{
                         parent.onKeep
-                    }">{d10[0]}</div>
+                    }">{ model.getDice(idx) }</div>
         </div>
     </div>
     <div class="pure-g pool" if="{state == 'summary'}">
+        <div class="pure-u-1">{ model.rolled }g{ model.kept }</div>
+        <div class="pure-u-1">{ model.getTotal() }</div>
         Yolo - rerool - historic
     </div>
     <script>
@@ -31,7 +33,7 @@
         }
 
         this.onKeep = function (e) {
-            var lastValue = e.item.d10[0]
+            model.kept = e.item.idx + 1
             self.state = 'summary'
         }
     </script>
