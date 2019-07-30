@@ -25,10 +25,9 @@ Roll.prototype.getChoice = function () {
     return t
 }
 
-Roll.prototype.rollingPool = function (n) {
-    this.rolled = n
+Roll.prototype.rollingPool = function () {
     this.pool = []
-    for (var k = 0; k < n; k++) {
+    for (var k = 0; k < this.rolled; k++) {
         this.pool.push([this.rollOneD10()])
     }
 }
