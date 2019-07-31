@@ -6,7 +6,7 @@ var Roll = function () {
     riot.observable(this);
     this.rolled = 0
     this.kept = 0
-    this.isEmphazed = false
+    this.isEmphased = false
     this.isRerollingTens = false
     this.isRerollingNines = false
     this.pool = []
@@ -64,10 +64,22 @@ Roll.prototype.sortPool = function () {
     })
 }
 
-Roll.prototype.reroll10 = function () {
+Roll.prototype.reroll = function () {
     for (var k in this.pool) {
         var d10 = this.pool[k]
-        while (d10[0] === 10) {
+        // managing emphases : reroll Ones only once, not One after a Ten nor a One after another One
+        if ((this.isEmphased) && (d10.length === 1) && (d10[0] === 1)) {
+            this.pool[k] = [this.rollOneD10()] // replacing
+        }
+        // managing Nines and Tens :
+        var exploding = []
+        if (this.isRerollingNines) {
+            exploding.push(9)
+        }
+        if (this.isRerollingTens) {
+            exploding.push(10)
+        }
+        while (-1 !== exploding.indexOf(d10[0])) {
             d10.unshift(this.rollOneD10())
         }
     }

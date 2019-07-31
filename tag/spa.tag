@@ -8,12 +8,20 @@
     </div>
     <div class="pure-g keep" if="{state == 'keep'}">
         <div class="pure-u-1-3">
-            <input type="checkbox" onclick="{
-                        onReroll10
+            <input type="checkbox" checked="{ model.isRerollingTens }" disabled="{ model.isRerollingTens }"  onclick="{
+                        onRerollTens
                     }"/>10's
         </div>
-        <button class="pure-button pure-u-1-3">1's</button>
-        <button class="pure-button pure-u-1-3">9's</button>
+        <div class="pure-u-1-3">
+            <input type="checkbox" checked="{ model.isEmphased }" disabled="{ model.isEmphased }"  onclick="{
+                        onRerollOnes
+                    }"/>1's
+        </div>
+        <div class="pure-u-1-3">
+            <input type="checkbox" checked="{ model.isRerollingNines }" disabled="{ model.isRerollingNines }"  onclick="{
+                        onRerollNines
+                    }"/>9's
+        </div>
         <div class="pure-u-1-2" each="{d10, idx in model.pool}">
             <div class="die" onclick="{
                         parent.onKeep
@@ -41,8 +49,20 @@
             self.state = 'summary'
         }
 
-        this.onReroll10 = function (e) {
-            model.reroll10()
+        this.onRerollTens = function (e) {
+            model.isRerollingTens = true
+            model.reroll()
+        }
+
+        this.onRerollOnes = function (e) {
+            model.isEmphased = true
+            model.reroll()
+        }
+
+        this.onRerollNines = function (e) {
+            model.isRerollingTens = true
+            model.isRerollingNines = true
+            model.reroll()
         }
 
         model.on('update', function () {
