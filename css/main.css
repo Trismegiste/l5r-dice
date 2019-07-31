@@ -15,3 +15,25 @@ footer {
 spa {
     text-align: center;
 }
+
+/* source http://www.colourlovers.com/palette/1231651/Fantasia_Hippo */
+.rollingTen {
+    background: #20FC90; /* this is a green */
+}
+
+.rollingNine {
+    background: #FC70C2; /* this is a red */
+}
+
+.rollingOne {
+    background: #FFD637; /* this is an orange */
+}
+
+.button-primary {
+    background: #76D8FF; /* this is a blue */
+}
+
+.keep input[type=checkbox] {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

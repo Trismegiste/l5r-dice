@@ -66,9 +66,8 @@ Roll.prototype.sortPool = function () {
 
 Roll.prototype.reroll = function () {
     for (var k in this.pool) {
-        var d10 = this.pool[k]
         // managing emphases : reroll Ones only once, not One after a Ten nor a One after another One
-        if ((this.isEmphased) && (d10.length === 1) && (d10[0] === 1)) {
+        if ((this.isEmphased) && (this.pool[k].length === 1) && (this.pool[k][0] === 1)) {
             this.pool[k] = [this.rollOneD10()] // replacing
         }
         // managing Nines and Tens :
@@ -79,8 +78,8 @@ Roll.prototype.reroll = function () {
         if (this.isRerollingTens) {
             exploding.push(10)
         }
-        while (-1 !== exploding.indexOf(d10[0])) {
-            d10.unshift(this.rollOneD10())
+        while (-1 !== exploding.indexOf(this.pool[k][0])) {
+            this.pool[k].unshift(this.rollOneD10())
         }
     }
     this.sortPool()
