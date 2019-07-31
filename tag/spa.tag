@@ -11,21 +11,21 @@
             <label>     
                 <input type="checkbox" checked="{ model.isRerollingTens }" disabled="{ model.isRerollingTens }"  onclick="{
                             onRerollTens
-                        }"/>10's
+                        }"/> 10's
             </label>
         </div>
         <div class="pure-u-1-3 rollingOne">
             <label>
                 <input type="checkbox" checked="{ model.isEmphased }" disabled="{ model.isEmphased }"  onclick="{
                             onRerollOnes
-                        }"/>1's
+                        }"/> 1's
             </label>
         </div>
         <div class="pure-u-1-3 rollingNine">
             <label>
                 <input type="checkbox" checked="{ model.isRerollingNines }" disabled="{ model.isRerollingNines }"  onclick="{
                             onRerollNines
-                        }"/>9's
+                        }"/> 9's
             </label>
         </div>
         <div class="pure-u-1-2" each="{d10, idx in model.pool}">
