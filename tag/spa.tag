@@ -10,8 +10,7 @@
         <div class="pure-u-1-3">
             <input type="checkbox" onclick="{
                         onReroll10
-                    }
-                   "/>10's
+                    }"/>10's
         </div>
         <button class="pure-button pure-u-1-3">1's</button>
         <button class="pure-button pure-u-1-3">9's</button>
@@ -27,8 +26,8 @@
         Yolo - rerool - historic
     </div>
     <script>
-        var self = this
         this.state = 'roll'  // 'keep' & 'summary'
+        var self = this
 
         this.onRoll = function (e) {
             rollSound.play()
