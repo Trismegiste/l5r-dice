@@ -30,6 +30,8 @@ Roll.prototype.rollingPool = function () {
     for (var k = 0; k < this.rolled; k++) {
         this.pool.push([this.rollOneD10()])
     }
+    // sort
+    this.sortPool()
 }
 
 Roll.prototype.getDice = function (n) {
@@ -47,4 +49,28 @@ Roll.prototype.getTotal = function () {
     }
 
     return sum
+}
+
+Roll.prototype.sortPool = function () {
+    this.pool.sort(function (a, b) {
+        var sa = a.reduce(function (v, s) {
+            return v + s
+        })
+        var sb = b.reduce(function (v, s) {
+            return v + s
+        })
+
+        return sb - sa
+    })
+}
+
+Roll.prototype.reroll10 = function () {
+    for (var k in this.pool) {
+        var d10 = this.pool[k]
+        while (d10[0] === 10) {
+            d10.unshift(this.rollOneD10())
+        }
+    }
+    this.sortPool()
+    this.trigger('update')
 }
