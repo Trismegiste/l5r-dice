@@ -8,19 +8,25 @@
     </div>
     <div class="pure-g keep" if="{state == 'keep'}">
         <div class="pure-u-1-3 rollingTen">
-            <input type="checkbox" checked="{ model.isRerollingTens }" disabled="{ model.isRerollingTens }"  onclick="{
-                        onRerollTens
-                    }"/>10's
+            <label>     
+                <input type="checkbox" checked="{ model.isRerollingTens }" disabled="{ model.isRerollingTens }"  onclick="{
+                            onRerollTens
+                        }"/>10's
+            </label>
         </div>
         <div class="pure-u-1-3 rollingOne">
-            <input type="checkbox" checked="{ model.isEmphased }" disabled="{ model.isEmphased }"  onclick="{
-                        onRerollOnes
-                    }"/>1's
+            <label>
+                <input type="checkbox" checked="{ model.isEmphased }" disabled="{ model.isEmphased }"  onclick="{
+                            onRerollOnes
+                        }"/>1's
+            </label>
         </div>
         <div class="pure-u-1-3 rollingNine">
-            <input type="checkbox" checked="{ model.isRerollingNines }" disabled="{ model.isRerollingNines }"  onclick="{
-                        onRerollNines
-                    }"/>9's
+            <label>
+                <input type="checkbox" checked="{ model.isRerollingNines }" disabled="{ model.isRerollingNines }"  onclick="{
+                            onRerollNines
+                        }"/>9's
+            </label>
         </div>
         <div class="pure-u-1-2" each="{d10, idx in model.pool}">
             <div class="die" onclick="{
@@ -29,6 +35,9 @@
         </div>
     </div>
     <div class="pure-g summary" if="{state == 'summary'}">
+        <div class="pure-u-1-3 rollingTen" if="{ model.isRerollingTens }"><div class="flag">10's</div></div>
+        <div class="pure-u-1-3 rollingOne" if="{ model.isEmphased }"><div class="flag">1's</div></div>
+        <div class="pure-u-1-3 rollingNine" if="{ model.isRerollingNines }"><div class="flag">9's</div></div>
         <div class="pure-u-1 dicepool">{ model.rolled }g{ model.kept }</div>
         <div class="pure-u-1 total">{ model.getTotal() }</div>
         <button class="pure-button pure-u-1 pure-button-primary" onclick="{

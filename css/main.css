@@ -1,5 +1,6 @@
 .roll .choice {
-    font-size: 300%;
+    font-size: 600%;
+    background-color: #ddd;
 }
 
 footer {
@@ -9,7 +10,7 @@ footer {
 }
 
 .keep .die {
-    font-size: 300%;    
+    font-size: 600%;    
 }
 
 spa {
@@ -33,7 +34,20 @@ spa {
     background: #76D8FF; /* this is a blue */
 }
 
-.keep input[type=checkbox] {
-    margin-top: 1em;
-    margin-bottom: 1em;
+.keep input[type=checkbox], .summary .flag {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.summary .dicepool {
+    font-size: 600%;
+}
+
+.summary .total {
+    font-size: 1200%;
+    font-weight: bold;
+}
+
+.summary button {
+    padding: 2em;
 }
