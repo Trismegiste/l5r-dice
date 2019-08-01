@@ -44,6 +44,13 @@
                     onReset
                 }">Reset</button>
     </div>
+    <footer if="{state == 'roll'}">Select to roll...</footer>
+    <footer if="{state == 'keep'}">Click to reroll and select to keep</footer>
+    <footer if="{state == 'summary'}" class="pure-g">
+        <div class="pure-u-1-5" each="{d10 in model.pool}">
+            {d10}
+        </div>
+    </footer>
     <script>
         this.state = 'roll'  // 'keep' & 'summary'
         var self = this
