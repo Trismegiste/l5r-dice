@@ -69,18 +69,18 @@
 
         this.onRerollTens = function (e) {
             model.isRerollingTens = true
-            model.reroll()
+            model.rerollExplode()
         }
 
         this.onRerollOnes = function (e) {
             model.isEmphased = true
-            model.reroll()
+            model.rerollEmphase()
         }
 
         this.onRerollNines = function (e) {
             model.isRerollingTens = true
             model.isRerollingNines = true
-            model.reroll()
+            model.rerollExplode()
         }
 
         this.onReset = function () {

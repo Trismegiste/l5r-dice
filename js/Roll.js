@@ -64,13 +64,20 @@ Roll.prototype.sortPool = function () {
     })
 }
 
-Roll.prototype.reroll = function () {
+// managing emphases : reroll Ones only once. No reroll a One after a Ten nor a One after another One
+Roll.prototype.rerollEmphase = function () {
     for (var k in this.pool) {
-        // managing emphases : reroll Ones only once, not One after a Ten nor a One after another One
         if ((this.isEmphased) && (this.pool[k].length === 1) && (this.pool[k][0] === 1)) {
             this.pool[k] = [this.rollOneD10()] // replacing
         }
-        // managing Nines and Tens :
+    }
+    this.sortPool()
+    this.trigger('update')
+}
+
+// managing Nines and Tens :
+Roll.prototype.rerollExplode = function () {
+    for (var k in this.pool) {
         var exploding = []
         if (this.isRerollingNines) {
             exploding.push(9)
