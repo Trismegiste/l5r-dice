@@ -64,18 +64,21 @@ Roll.prototype.sortPool = function () {
     })
 }
 
-// managing emphases : reroll Ones only once. No reroll a One after a Ten nor a One after another One
+// Managing emphases : reroll Ones only once. No reroll a One after a Ten nor a One after another One
+// This method is NOT idempotent, that's why explode and emphase are treated in two distinct methods
 Roll.prototype.rerollEmphase = function () {
     for (var k in this.pool) {
         if ((this.isEmphased) && (this.pool[k].length === 1) && (this.pool[k][0] === 1)) {
             this.pool[k] = [this.rollOneD10()] // replacing
         }
     }
+    this.rerollExplode() // reroll exploding dice if there are some
     this.sortPool()
     this.trigger('update')
 }
 
-// managing Nines and Tens :
+// Managing Nines and Tens :
+// This method is idempotent
 Roll.prototype.rerollExplode = function () {
     for (var k in this.pool) {
         var exploding = []
