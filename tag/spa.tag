@@ -7,21 +7,21 @@
         </div>
     </div>
     <div class="pure-g keep" if="{state == 'keep'}">
-        <div class="pure-u-1-3 rollingTen">
+        <div class="pure-u-1-3 { model.hasAtLeastOneDie(10) ? 'rollingTen' : 'nodice' }">
             <label>     
                 <input type="checkbox" checked="{ model.isRerollingTens }" disabled="{ model.isRerollingTens }"  onclick="{
                             onRerollTens
                         }"/> 10's
             </label>
         </div>
-        <div class="pure-u-1-3 rollingOne">
+        <div class="pure-u-1-3 { model.hasAtLeastOneDie(1) ? 'rollingOne' : 'nodice' }">
             <label>
                 <input type="checkbox" checked="{ model.isEmphased }" disabled="{ model.isEmphased }"  onclick="{
                             onRerollOnes
                         }"/> 1's
             </label>
         </div>
-        <div class="pure-u-1-3 rollingNine">
+        <div class="pure-u-1-3 { model.hasAtLeastOneDie(9) ? 'rollingNine' : 'nodice' }">
             <label>
                 <input type="checkbox" checked="{ model.isRerollingNines }" disabled="{ model.isRerollingNines }"  onclick="{
                             onRerollNines

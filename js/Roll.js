@@ -95,3 +95,14 @@ Roll.prototype.rerollExplode = function () {
     this.sortPool()
     this.trigger('update')
 }
+
+Roll.prototype.hasAtLeastOneDie = function (n) {
+    for (var k in this.pool) {
+        var d10 = this.pool[k]
+        if ((d10.length === 1) && (d10[0] === n)) {
+            return true
+        }
+    }
+
+    return false
+}

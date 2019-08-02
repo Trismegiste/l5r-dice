@@ -13,6 +13,10 @@ footer {
     font-size: 600%;    
 }
 
+.keep .nodice {
+    background-color: #ddd;
+}
+
 spa {
     text-align: center;
 }
