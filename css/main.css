@@ -55,3 +55,7 @@ spa {
 .summary button {
     padding: 2em;
 }
+
+footer div {
+    margin-bottom: 1em;
+}
